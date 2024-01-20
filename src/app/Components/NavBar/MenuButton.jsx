@@ -7,7 +7,7 @@ const MenuButton = ({
   isOpen = false,
   width = 24,
   height = 24,
-  strokeWidth = 2,
+  strokeWidth = 2.5,
   color = "#fff",
   transition = null,
   lineProps = null,
@@ -21,8 +21,8 @@ const MenuButton = ({
     },
     opened: {
       rotate: 45,
-      translateY: 0,
-      translateX : 1.5,
+      translateY: 2,
+      translateX : 0,
     }
   };
   const center = {
@@ -42,8 +42,8 @@ const MenuButton = ({
     },
     opened: {
       rotate: -45,
-      translateY: 0,
-      translateX : -1.5,
+      translateY: -2,
+      translateX : 0,
     }
   };
   lineProps = {

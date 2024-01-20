@@ -2,8 +2,7 @@
 
 import MainPage from "./Components/MainPage/MainPage";
 import NavBar from "./Components/NavBar/NavBar";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
 export default function Home() {
   // useEffect(() => {
   //   if ('serviceWorker' in navigator) {
@@ -11,12 +10,10 @@ export default function Home() {
   //   }
   // }, []);
 
-  
-
   return (
-   <div className="flex flex-col items-center bg-black">
-   <NavBar/>
-   <MainPage/>
+   <div className={`flex flex-col bg-black items-center`}>
+    <NavBar />
+    <MainPage />
    </div>
   );
 }
