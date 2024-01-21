@@ -14,38 +14,22 @@ const MenuButton = ({
   ...props
 }) => {
   const variant = isOpen ? "opened" : "closed";
+
   const top = {
-    closed: {
-      rotate: 0,
-      translateY: 0
-    },
-    opened: {
-      rotate: 45,
-      translateY: 2,
-      translateX : 0,
-    }
+    closed: { rotate: 0, translateY: 0 },
+    opened: { rotate: 45, translateY: 2 }
   };
+
   const center = {
-    closed: {
-      opacity: 1,
-      translateX : 0
-    },
-    opened: {
-      opacity: 0,
-      translateX : -2
-    }
+    closed: { opacity: 1, translateX : 0 },
+    opened: { opacity: 0, translateX : -2 }
   };
+
   const bottom = {
-    closed: {
-      rotate: 0,
-      translateY: 0,
-    },
-    opened: {
-      rotate: -45,
-      translateY: -2,
-      translateX : 0,
-    }
+    closed: { rotate: 0, translateY: 0, },
+    opened: {  rotate: -45, translateY: -2,}
   };
+  
   lineProps = {
     stroke: color,
     strokeWidth: strokeWidth,

@@ -41,7 +41,7 @@ const EducationSection = ({reverse,item})=>{
 
     return <>
     <div className={`w-full p-3 ${reverse && 'md:ml-auto md:items-end'}
-     min-h-[15rem] flex flex-col rounded-lg my-[4rem] bg-[#27272794] px-[3rem] py-[2rem] md:w-3/4`}>
+     min-h-[15rem] flex flex-col shadow-[#85838352] shadow-lg rounded-lg my-[4rem] bg-[#27272794] px-[3rem] py-[2rem] md:w-[60%]`}>
      <div className="text-4xl font-semibold">{college}</div>
      <div className="mt-2 text-2xl font-medium">{degree}</div>
     {branch &&  <div className="mt-2 text-xl font-normal">{branch}</div> }

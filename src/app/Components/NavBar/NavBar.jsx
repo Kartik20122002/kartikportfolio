@@ -1,5 +1,5 @@
 'use client'
-import { useScroll, useMotionValueEvent, motion, AnimatePresence } from "framer-motion"
+import { useScroll, stagger, useMotionValueEvent, motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react";
 import Image from 'next/image'
 import { MenuButton } from "./MenuButton";
@@ -7,6 +7,10 @@ import { MenuButton } from "./MenuButton";
 
 const name = "Kartik Hatwar"
 const links = [
+    {
+        title : 'Home',
+        id : '#home',
+    },
     {
         title : 'Education',
         id : '#education',
@@ -51,60 +55,61 @@ export default function NavBar() {
     const menuButtonStyle = {
         marginLeft: "2rem"
     };
-
-    const shrinkCss = 'w-[70%] bg-[#a7a3a31c] md:w-[50%] lg:w-[30%]';
+    const shrinkCss = 'w-[70%] md:w-[50%] lg:w-[30%]';
     const expandCss = 'w-[99%]';
 
+    const variants = {
+        closed : {
+            opacity : 0,
+            width : 0,
+            borderRadius : '10rem',
+        },
+        opened : {
+            opacity : 1,
+            width : 'fit-content',
+            borderRadius : '0.5rem',
+            transition: {
+                duration: 1 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
+            }
+        }
+    }
+
+
+    const item = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1 }
+      }
+
+
     return (
-        <AnimatePresence>
+       <AnimatePresence>
+        {
+            false ? 
+            <motion.div layout transition={{duration : 1}} className="fixed mt-4 bg-[#53525261] px-4">
+            <MenuButton isOpen={isOpen} onClick={() => setOpen(!isOpen)} style={menuButtonStyle} /> 
+          </motion.div> 
+            :
 
-            <motion.div className={`${shrink ? shrinkCss : expandCss} fixed top-4 text-white rounded-xl flex justify-between text-center py-2`}>
-
-                <motion.div className="flex items-center px-4 rounded-xl justify-evenly">
-                    <motion.div className="mr-2">
-                        <Image src={'./user.svg'} width={100} height={100} className={`rounded-full !min-w-0 !min-h-0 !w-10 !h-10`} alt="user" />
-                    </motion.div>
-                    {
-                        !shrink &&
-                         <motion.div className="hidden font-bold md:block md:text-2xl">
-                            {name}
-                        </motion.div>
-                    }
-                </motion.div>
-
-                <motion.div className={`flex px-1`} >
-
-        
-                    <motion.div className={`${shrink ? 'flex' : 'flex md:hidden'} items-center text-white cursor-pointer justify-center pr-4`}>
-                        <MenuButton className="w-full" isOpen={isOpen} onClick={() => setOpen(!isOpen)} style={menuButtonStyle} />
-                    </motion.div>
-                        
-                    <motion.div className={`${shrink ? 'hidden' : 'md:flex hidden'} items-center px-2`} >
-                        {links.map((link, index) => {
-                            return <motion.a layout className="mx-2 text-lg font-bold" key={index} href={link.id}>{link.title}</motion.a>
-                        })}
-                    </motion.div>
-                    
-
-
-
-                </motion.div>
-
-                <AnimatePresence>
-                    {
-                        isOpen && <motion.div className="absolute text-white w-full flex flex-col mt-2 rounded-lg bg-[#a7a3a31c] top-[100%] left-0">
-                            {links.map((link, index) => {
-                                return <motion.a onClick={()=>setOpen(false)} key={index} className="py-2 cursor-pointer my-1 text-lg rounded-md hover:bg-[#bcbaba1c] " href={link.id}>{link.title}</motion.a>
-                            })}
-                        </motion.div>
-                    }
-                </AnimatePresence>
-
-            </motion.div>
-
-
-
+            <AnimatePresence>
+            <motion.div layout
+        variants={variants}
+        initial = 'closed'
+        animate = 'opened'
+        exit= 'closed'
+        className="fixed z-10 flex p-4 mt-2 text-white bg-blur backdrop-filter backdrop-blur-lg bg-grey bg-opacity-10 justify-evenly">
+          {
+            links.map( (link,index) =>{
+                return <motion.div initial='hidden' animate='show' variants={item} 
+                transition={{delay : (index)*0.2 + 1 , duration : 1}}
+                 className="mx-6 text-lg font-bold"
+                 key={link.id}>{link.title}</motion.div>
+                
+            })
+          }
+        </motion.div>
         </AnimatePresence>
+        }
+       </AnimatePresence>
     )
 }
 
