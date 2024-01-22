@@ -63,13 +63,16 @@ export default function NavBar() {
             opacity : 0,
             width : 0,
             borderRadius : '10rem',
+            transition: {
+                duration: 2 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
+            }
         },
         opened : {
             opacity : 1,
             width : 'fit-content',
             borderRadius : '0.5rem',
             transition: {
-                duration: 1 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
+                duration: 2 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
             }
         }
     }
