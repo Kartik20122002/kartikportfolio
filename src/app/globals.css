@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,15 +18,19 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-*::-webkit-scrollbar{
+/* *::-webkit-scrollbar{
   display: none;
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));

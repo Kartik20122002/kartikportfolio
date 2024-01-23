@@ -5,12 +5,12 @@ import { useRef } from 'react';
 export default function ImageSection(){
     const tabRef = useRef(null);
     const {scrollYProgress} = useScroll({
-        offset : [0, 1],
+        target:tabRef,
+        offset : ['start end','end start'],
     });
 
-    const translateX = useTransform(scrollYProgress ,[0,1],['0%','200%']);
-    const opacity = useTransform(scrollYProgress ,[0,1],[1,0]);
-    const scale = useTransform(scrollYProgress ,[0,1],[1,0]);
+    const opacity = useTransform(scrollYProgress ,[0.5,1],[1,0]);
+    const scale = useTransform(scrollYProgress ,[0.5,1],[1,0]);
 
     const path = './user.svg'
 
@@ -30,7 +30,7 @@ export default function ImageSection(){
 
     return (
     <motion.div ref={tabRef} layout className="flex items-center justify-center w-1/4 mx-auto mt-[4rem] pt-[4rem] md:mx-0 md:mt-0 md:w-full">
-        <motion.div style={{translateX,scale}} layout initial='hide' animate='show' exit='hide' variants={imgVariant} className="overflow-hidden rounded-full w-fit">
+        <motion.div style={{ opacity,scale}} layout initial='hide' animate='show' exit='hide' variants={imgVariant} className="overflow-hidden rounded-full w-fit">
         <Image width={100} height={100} src={path} className='w-full' alt='User'/>
         </motion.div>
     </motion.div>)

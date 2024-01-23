@@ -4,12 +4,12 @@ import { useRef } from 'react';
 export default function InfoSection(){
     const tabRef = useRef(null);
     const {scrollYProgress} = useScroll({
-        offset : [0, 1],
+        target:tabRef,
+        offset : ['start end','end start'],
     });
 
-    const translateX = useTransform(scrollYProgress ,[0,1],['0%','-200%']);
-    const opacity = useTransform(scrollYProgress ,[0,1],[1,0]);
-    const scale = useTransform(scrollYProgress ,[0,1],[1,0]);
+    const opacity = useTransform(scrollYProgress ,[0.5,1],[1,0]);
+    const scale = useTransform(scrollYProgress ,[0.5,1],[1,0]);
     
     const name = "Kartik Hatwar";
     const description = "I am Full Stack Developer with Hands on Experience with Tech like Next.js, MERN Stack and System Design."
@@ -18,14 +18,12 @@ export default function InfoSection(){
     const descriptionarray = description.split("");
     const tabVariants = {
         hide : {
-            opacity : 0,
-            scale : 0
+            width : 0 , paddingInline : 0
         },
         show : {
-            opacity : 1,
-            scale : 1,
+            width : 'fit-content' , paddingInline : '1.5rem',
             transition: {
-              delay : 1,  duration: 1 , ease : 'easeInOut' , type : 'spring' , damping : 30 , stiffness : 200
+              delay : 1,  duration: 1 , ease : 'easeInOut'
             }
         }
     }
@@ -43,10 +41,11 @@ export default function InfoSection(){
     }
 
 
-
+    // 
     return (
-    <motion.div style={{translateX ,scale }} ref={tabRef} layout initial='hide' animate='show' exit='hide' variants={tabVariants}
-    className="flex flex-col w-full mt-[4rem] mb-[10rem] py-4 px-6 rounded-lg h-fit bg-blur backdrop-filter backdrop-blur-lg z-0 bg-grey-light bg-opacity-10 p-6 shadow-md justify-evenly">
+    <motion.div style={{opacity ,scale}} ref={tabRef} layout 
+    initial='hide' animate='show' exit='hide' variants={tabVariants}
+    className="flex flex-col mt-[4rem] overflow-hidden mb-[10rem] py-4 rounded-lg h-fit bg-blur backdrop-filter backdrop-blur-lg z-0 bg-grey-light bg-opacity-10 shadow-md  ">
         <motion.div layout initial='hide' animate='show' exit='hide' transition={{delay : 0}} variants={tabVariants} className="py-2 heading mb-[3rem]">
             <motion.div layout className="text-[3rem] text-center md:text-start md:text-[4rem] font-bold">{
             namearray.map((char , index)=>{

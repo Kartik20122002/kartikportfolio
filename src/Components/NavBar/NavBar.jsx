@@ -55,32 +55,23 @@ export default function NavBar() {
     const menuButtonStyle = {
         marginLeft: "2rem"
     };
-    const shrinkCss = 'w-[70%] md:w-[50%] lg:w-[30%]';
-    const expandCss = 'w-[99%]';
 
     const variants = {
         closed : {
-            opacity : 0,
-            width : 0,
-            borderRadius : '10rem',
-            transition: {
-                duration: 2 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
-            }
+         width : 0 , paddingLeft:0 , paddingRight : 0
         },
         opened : {
-            opacity : 1,
-            width : 'fit-content',
-            borderRadius : '0.5rem',
+            paddingLeft : 0 , paddingRight : 0 , width : 'fit-content',
             transition: {
-                duration: 2 , ease : 'easeInOut' , type : 'spring' , damping : 20 , stiffness : 200
+                duration: 1.5 , ease : 'easeInOut'
             }
         }
     }
 
 
     const item = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1 }
+        hidden: { transform : 'translateY(-150%)' },
+        show: { transform : 'translateY(0%)' }
       }
 
 
@@ -94,19 +85,16 @@ export default function NavBar() {
             :
 
             <AnimatePresence>
-            <motion.div layout
-        variants={variants}
-        initial = 'closed'
-        animate = 'opened'
-        exit= 'closed'
-        className="fixed z-10 flex p-4 mt-2 text-white bg-blur backdrop-filter backdrop-blur-lg bg-grey bg-opacity-10 justify-evenly">
+            <motion.div layout variants={variants}
+             initial='closed' animate='opened'
+        className="fixed z-10 flex py-4 mt-2 rounded-md overflow-hidden text-white bg-blur backdrop-filter backdrop-blur-lg bg-grey bg-opacity-10 justify-evenly">
           {
             links.map( (link,index) =>{
-                return <motion.div initial='hidden' animate='show' variants={item} 
-                transition={{delay : (index)*0.2 + 1 , duration : 1}}
+                return <motion.a href={link.id}
+                initial='hidden' animate='show' variants={item} 
+                transition={{delay : (index)*0.4 + 1 , duration : 1}}
                  className="mx-6 text-lg font-bold"
-                 key={link.id}>{link.title}</motion.div>
-                
+                 key={link.id}>{link.title}</motion.a>  
             })
           }
         </motion.div>

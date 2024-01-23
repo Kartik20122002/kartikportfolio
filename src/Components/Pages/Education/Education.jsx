@@ -1,4 +1,9 @@
+import {  motion} from "framer-motion";
+
 export default function EducationPage(){
+
+  
+
     const education = [
         {
             college : 'IIT (ISM) Dhanbad',
@@ -22,32 +27,43 @@ export default function EducationPage(){
             date : 'July 2017 - May 2018'
         }
     ]
-    return (
-    <div id="education" className="w-full min-h-[90vh]">
-        
-        <div className="text-[3rem] font-bold">Education</div>
 
-        <div className="w-[99%] mt-4">
-            {education.map((item,index)=>{
-                return <EducationSection key={index} reverse={index%2} item={item} />
-            })}
-        </div>
+  
+
+   
+
+    return (
+    <motion.div  layout id="education" className="w-full">
         
-    </div>)
+        <motion.div className="text-[3rem] font-bold">Education</motion.div>
+        <motion.div className={`w-[99%] mt-4 min-h-[80vh]`}>
+        <EducationSection 
+        reverse={false} item={education[0]} />
+
+        <EducationSection 
+        reverse={true} item={education[1]} />
+
+        <EducationSection 
+        reverse={false} item={education[2]} />
+        </motion.div>
+        
+    </motion.div>)
 }
 
 const EducationSection = ({reverse,item})=>{
     const {college , degree , branch , grade , date } = item;
 
     return <>
-    <div className={`w-full p-3 ${reverse && 'md:ml-auto md:items-end'}
-     min-h-[15rem] flex flex-col shadow-[#85838352] shadow-lg rounded-lg my-[4rem] bg-[#27272794] px-[3rem] py-[2rem] md:w-[60%]`}>
-     <div className="text-4xl font-semibold">{college}</div>
+    <motion.div className={`w-full md:w-[60%] ${reverse && 'md:ml-auto md:items-end'}
+     min-h-[15vh] flex flex-col  rounded-lg my-[4rem] bg-blur backdrop-filter backdrop-blur-lg z-0 bg-white bg-opacity-10 px-4 md:px-[4rem] py-[4rem]`}>
+
+     <motion.div className="text-4xl font-semibold">{college}
+     </motion.div>
      <div className="mt-2 text-2xl font-medium">{degree}</div>
     {branch &&  <div className="mt-2 text-xl font-normal">{branch}</div> }
      <div className="mt-2">Grade : {grade}</div>
      <div className="mt-2 text-xl font-normal opacity-75">{date}</div>
-    </div>
+    </motion.div>
     </> 
     
 }
