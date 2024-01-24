@@ -1,5 +1,5 @@
 'use client'
-import { useAnimate , motion, stagger, useScroll, AnimatePresence } from "framer-motion";
+import { useAnimate , motion, stagger, useScroll } from "framer-motion";
 import { MenuButton } from "./MenuButton";
 import { useEffect, useState } from "react";
 
@@ -43,16 +43,12 @@ export default function NavBar() {
         hideLinks : { scale : 0 },
         showLinks :{ scale : 1 }
     }
-
-    const useAnimation = () =>{
-        animate([
-          [scope.current,animations.showNav,{duration : 0.3 }],
-          ['a',animations.showLinks, {  duration : 0.02 , delay : stagger(0.02) ,   ease : 'easeInOut' , type :'spring', damping : 10 , stiffness : 100 }]
-        ]);
-      } 
   
       useEffect(()=>{
-          useAnimation();
+        animate([
+            [scope.current,animations.showNav,{duration : 0.3 }],
+            ['a',animations.showLinks, {  duration : 0.02 , delay : stagger(0.02) ,   ease : 'easeInOut' , type :'spring', damping : 10 , stiffness : 100 }]
+          ]);
       },[])
 
     const {scrollY} = useScroll();
