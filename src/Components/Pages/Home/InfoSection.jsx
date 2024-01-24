@@ -14,10 +14,10 @@ export default function InfoSection(){
     }
 
     const initAnimate = ()=> animate([
-        [scope.current,TabAnimations.show,{duration : 0.1  , type : 'spring' , damping : 20 , stiffness : 100}],
-        ['#name',TabAnimations.showName,{duration : 0.01 , delay : 0.1 }],
-        ['#desc',TabAnimations.showDesc,{duration : 0.01 , delay : 0.11}],
-        ['.links',TabAnimations.showBtn,{duration : 0.01 , delay : stagger(0.1,'startDelay')  , type : 'spring' , damping : 20 , stiffness : 100 }],
+        [scope.current,TabAnimations.show,{duration : 0.2  , type : 'spring' , damping : 20 , stiffness : 100}],
+        ['#name',TabAnimations.showName,{duration : 0.1 , delay : 0.2 }],
+        ['#desc',TabAnimations.showDesc,{duration : 0.1 , delay : 0.3}],
+        ['.links',TabAnimations.showBtn,{duration : 0.1 , delay : stagger(0.1,'startDelay')  , type : 'spring' , damping : 20 , stiffness : 100 }],
     ]);
 
     useEffect(()=>{

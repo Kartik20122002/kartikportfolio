@@ -46,8 +46,8 @@ export default function NavBar() {
   
       useEffect(()=>{
         animate([
-            [scope.current,animations.showNav,{duration : 0.3 }],
-            ['a',animations.showLinks, {  duration : 0.02 , delay : stagger(0.02) ,   ease : 'easeInOut' , type :'spring', damping : 10 , stiffness : 100 }]
+            [scope.current,animations.showNav,{duration : 0.5 }],
+            ['a',animations.showLinks, {  duration : 0.05 , delay : stagger(0.02) ,   ease : 'easeInOut' , type :'spring', damping : 10 , stiffness : 100 }]
           ]);
       },[])
 

@@ -8,13 +8,13 @@ export default function ImageSection(){
 
     const variations = {
         hideTab : {scaleY : 0} , showTab : {scaleY : 1},
-        hideImg : {scaleX : 0} , showImg : {scaleX : 1}
+        hideImg : {opacity : 0} , showImg : {opacity : 1}
     }
    
     useEffect(()=>{
         animate([
-            ['#outer',variations.showTab, {duration : 0.1  , type : 'spring' , damping : 20 , stiffness : 100}],
-            ['#img',variations.showImg , {duration : 0.1  , type : 'spring' , damping : 20 , stiffness : 100}]
+            ['#outer',variations.showTab, {duration : 0.2  , type : 'spring' , damping : 20 , stiffness : 100}],
+            ['#img',variations.showImg , {duration : 0.3  , type : 'spring' , damping : 20 , stiffness : 100}]
         ])
     })
 
