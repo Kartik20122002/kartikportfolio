@@ -5,9 +5,9 @@ import { motion} from "framer-motion";
 
 const MenuButton = ({
   isOpen = false,
-  width = 24,
-  height = 24,
-  strokeWidth = 2.5,
+  width = 20,
+  height = 20,
+  strokeWidth = 2,
   color = "#fff",
   transition = null,
   lineProps = null,
