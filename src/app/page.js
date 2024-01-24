@@ -4,11 +4,11 @@ import NavBar from '@/Components/NavBar/NavBar';
 import './build.css'
 import './global.css'
 export default function Home() {
-  // useEffect(() => {
-  //   if ('serviceWorker' in navigator) {
-  //     navigator.serviceWorker.register('/service-worker.js');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+  }, []);
 
   return (
    <div className={`flex flex-col pb-6 relative items-center`}>
