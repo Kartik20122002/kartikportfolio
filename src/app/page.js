@@ -1,9 +1,7 @@
 'use client'
-
 import MainPage from '@/Components/MainPage/MainPage';
 import NavBar from '@/Components/NavBar/NavBar';
 import './globals.css'
-import { useEffect, useState } from "react";
 export default function Home() {
   // useEffect(() => {
   //   if ('serviceWorker' in navigator) {
