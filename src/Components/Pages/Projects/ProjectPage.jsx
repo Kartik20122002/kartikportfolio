@@ -47,7 +47,7 @@ export default function ProjectPage() {
 
 
     return (
-        <div id="project" className="w-full mb-8 py-8 px-0 md:px-[4rem]">
+        <div id="projects" className="w-full mb-8 py-8 px-0 md:px-[4rem]">
 
             <div className="text-[3rem] font-bold px-4 md:px-0 mb-[4rem]">Projects</div>
 
