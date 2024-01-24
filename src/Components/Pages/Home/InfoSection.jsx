@@ -18,30 +18,28 @@ export default function InfoSection(){
     ]
 
 
-
-    // 
     return (
-    <motion.div 
+    <div 
     className="flex flex-col px-4 items-center md:items-start max-w-full sm:mt-[2rem] md:mt-[4rem] cursor-pointer overflow-hidden mb-[10rem] py-4 rounded-lg bg-glass bg-grey-light shadow-md">
-        <motion.div className="py-2 heading mb-[3rem]">
-            <motion.div layout className="text-[3rem] text-center md:text-start md:text-[4rem] font-bold">{ name}</motion.div>
-        </motion.div>
-        <motion.div className="py-2 px-2 md:px-0 text-[1.5rem] md:text-[2rem] font-semibold text-center md:text-start">
+        <div className="py-2 heading mb-[3rem]">
+            <div className="text-[3rem] text-center md:text-start md:text-[4rem] font-bold">{ name}</div>
+        </div>
+        <div className="py-2 px-2 md:px-0 text-[1.5rem] md:text-[2rem] font-semibold text-center md:text-start">
             {description}
-        </motion.div>
+        </div>
 
-        <motion.div className="flex justify-center mt-[3rem] md:justify-start buttons">
+        <div className="flex justify-center mt-[3rem] md:justify-start buttons">
             {
                 links?.map((link,index)=>{
                     return <Button key={index} index={index} item={link} />
                 })
             }
-        </motion.div>
-    </motion.div>)
+        </div>
+    </div>)
 }
 
 const Button = ({item , index})=>{
    
-    return item?.link ? <motion.a key={index} className="p-2 mx-4 my-2 font-semibold border rounded-md" href={item?.link}>{item?.name}</motion.a>
+    return item?.link ? <a key={index} className="p-2 mx-4 my-2 font-semibold border rounded-md" href={item?.link}>{item?.name}</a>
     : null
 }

@@ -72,7 +72,7 @@ const ProjectTab = ({project})=>{
                             <span className="mr-3 text-center">{endDate})</span>
         </div>
         <div className="relative my-[1.5rem] border rounded-xl bg-grey-light bg-glass hidden md:block max-w-[486px] aspect-video overflow-clip">
-            <LiveProject link={link} />
+            {/* <LiveProject link={link} /> */}
         </div>
     </div>
 
@@ -103,9 +103,9 @@ const ProjectTab = ({project})=>{
     </div>
 }
 
-const LiveProject = ({link}) =>{
-    return <iframe style={{
-        transformOrigin : 'top left',
-        transform : 'scale(0.45)'
-    }} src={link} seamless aria-controls="false" className="w-[1080px] max-w-[1080px] aspect-video rounded-xl" />
-}
+// const LiveProject = ({link}) =>{
+//     return <iframe style={{
+//         transformOrigin : 'top left',
+//         transform : 'scale(0.45)'
+//     }} src={link} seamless aria-controls="false" className="w-[1080px] max-w-[1080px] aspect-video rounded-xl" />
+// }

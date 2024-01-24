@@ -66,7 +66,7 @@ export default function ExperiencePage() {
 
                         <div id='exp1img' className="image shrink grow-0 basis-1/3 flex items-center justify-center">
                             <div className="w-1/2 relative">
-                            <img src="/laptop.png" className='w-full h-auto'/>
+                            <img alt='laptop' src="/laptop.png" className='w-full h-auto'/>
                             </div>
                         </div>
 
