@@ -3,6 +3,7 @@ import MainPage from '@/Components/MainPage/MainPage';
 import NavBar from '@/Components/NavBar/NavBar';
 import './../../build.css'
 import './globals.css'
+import { useEffect } from 'react';
 export default function Home() {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
