@@ -87,7 +87,7 @@ export default function NavBar() {
             <AnimatePresence>
             <motion.div layout variants={variants}
              initial='closed' animate='opened'
-        className="fixed z-10 flex py-4 mt-2 rounded-md overflow-hidden text-white bg-blur backdrop-filter backdrop-blur-lg bg-grey bg-opacity-10 justify-evenly">
+        className="fixed z-10 flex py-4 mt-2 rounded-md overflow-hidden text-white bg-glass bg-grey justify-evenly">
           {
             links.map( (link,index) =>{
                 return <motion.a href={link.id}
