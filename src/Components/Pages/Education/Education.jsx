@@ -1,4 +1,4 @@
-import { motion , stagger, useAnimate, useInView } from "framer-motion";
+import { motion , stagger, useAnimate, useDragControls, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export default function EducationPage(){
@@ -52,6 +52,8 @@ export default function EducationPage(){
         
     ]
 
+    const dragControls = useDragControls();
+
   
     return (
     <div id="education" className="w-full px-4 my-[6rem]  md:px-[4rem]">
@@ -62,19 +64,19 @@ export default function EducationPage(){
         {education?.map((item,index)=>{
             const {college , degree , branch , grade , date } = item;
 
-            return <motion.div
+            return <motion.div drag='x' dragControls={dragControls}
             layout key={index}
             className={`w-full overflow-hidden rounded-lg  transition-all duration-1000 flex bg-glass bg-grey-light flex-col px-4 md:px-[2rem] py-[4rem]`}>
 
             <motion.div layout initial='initial' variants={widthSlider} 
-            className="clg text-4xl bg-grey-light text-center bg-glass px-4 py-2 overflow-hidden rounded-lg font-semibold">
+            className="clg text-4xl text-center px-4 py-2 overflow-hidden rounded-lg font-semibold">
               <motion.span initial={{opacity : 0}}>{college}</motion.span>  
             </motion.div>
 
-            <div className=" bg-grey-light mt-6 px-4 py-2 rounded-lg">
+            <div className="mt-6 px-4 py-2 rounded-lg">
             <div className="mt-4 text-2xl font-medium">{degree}</div>
             {branch &&  <div className="mt-2 text-xl font-normal">{branch}</div> }
-            <div className="mt-3 px-4 py-2 bg-grey-light  w-fit rounded-lg">Grade : {grade}</div>
+            <div className="mt-3 px-4 py-2  w-fit rounded-lg">Grade : {grade}</div>
             <div className="mt-3 text-xl font-normal opacity-50">{date}</div>
             </div>
            </motion.div>
