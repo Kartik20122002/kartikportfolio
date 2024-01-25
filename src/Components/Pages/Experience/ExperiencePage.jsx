@@ -42,7 +42,7 @@ export default function ExperiencePage() {
                     </div>
 
                     <div className="px-4 md:px-0 flex flex-col flex-wrap md:flex-row">
-                        <div id='comp1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light rounded-lg basis-1/3 py-4 px-6">
+                        <div id='comp1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light bg-glass rounded-lg basis-1/3 py-4 px-6">
                             <div className="text-3xl text-center md:text-start py-2 w-full rounded-md text-white font-bold">Company : {experience.companyName}</div>
                             <div className="flex justify-between md:justify-start mt-4 opacity-75">
                                 <span className='md:pr-4'>  Location : {experience.location} </span>
