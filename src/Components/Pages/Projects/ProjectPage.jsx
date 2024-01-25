@@ -1,3 +1,4 @@
+import {motion} from 'framer-motion'
 export default function ProjectPage() {
 
     const projects = [
@@ -80,9 +81,18 @@ const ProjectTab = ({project})=>{
         <div className="w-full flex-wrap rounded-lg flex justify-center md:justify-normal mt-2">
             {
                 stack?.map((item,index)=>{
-                    return <span key={index} className='mx-2 text-nowrap bg-glass bg-grey-light py-2 px-4 mb-2 rounded-md'>
+                    return <motion.span  drag
+                    dragConstraints={{
+                        right: 0,
+                        top : 0,
+                        bottom : 0,
+                        left: 0,
+                    }}
+                    dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
+                    dragElastic={0.1}
+                    whileTap={{ cursor: "grabbing" }} key={index} className='mx-2 cursor-grab transition-colors relative text-nowrap bg-glass bg-grey-light hover:bg-grey py-2 px-4 mb-2 rounded-md'>
                         {item}
-                        </span>
+                        </motion.span>
                 })
             }
         </div>
@@ -95,8 +105,8 @@ const ProjectTab = ({project})=>{
                     })}
         </div>
         <div className="mt-[4rem] mb-[1rem] flex justify-evenly md:justify-normal md:mx-6">
-            <a href={link} target="_blank" className="px-4 py-2 bg-glass bg-grey rounded-xl md:mr-6 font-semibold text-lg">Visit</a>
-            <a href={github} target="_blank" className="px-4 py-2 bg-glass bg-grey rounded-xl font-semibold text-lg">Github</a>
+            <a href={link} target="_blank" className="px-4 py-2 bg-darkgreen hover:bg-green rounded-xl md:mr-6 font-semibold text-lg">Visit</a>
+            <a href={github} target="_blank" className="px-4 py-2 bg-darkgreen hover:bg-green rounded-xl font-semibold text-lg">Github</a>
         </div>
     </div>
 

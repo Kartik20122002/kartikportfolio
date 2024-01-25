@@ -12,8 +12,7 @@ export default function Home() {
   // }, []);
 
   return (
-   <div className={`flex flex-col pb-6 relative items-center`}>
-    <img src='./bg.jpg' alt='bg' className='fixed top-0 bottom-0 left-0 z-[-1] w-full h-[100vh]' />
+   <div className={`flex flex-col bg-dark text-white pb-6 relative items-center`}>
     <NavBar />
     <MainPage />
    </div>

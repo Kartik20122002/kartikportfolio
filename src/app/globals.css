@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -42,4 +43,9 @@ body {
   --tw-bg-opacity: 0.1;
   --tw-backdrop-blur: blur(16px);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.bg-grade{
+  background: rgb(0,0,47);
+  background: radial-gradient(circle, rgba(0,0,47,1) 0%, rgba(0,0,61,1) 25%, rgba(0,0,80,1) 50%, rgba(0,0,34,1) 75%, rgba(0,0,0,1) 100%);
 }

@@ -6,7 +6,7 @@ export default function ExperiencePage() {
     {
         companyName: 'Gypssy',
         companyDescription: "My internship at Gypssy, a Bangalore-based startup, exposed me to their innovative travel platform. Gypssy seamlessly connects tourists to dream vacations while empowering tour providers. The user-friendly interface simplifies trip planning, with a secure payment system ensuring smooth transactions. Gypssy's emphasis on transparency, showcased through robust review systems, aligns with their vision of shaping the future of travel. This experience deepened my understanding of the travel industry and their commitment to providing unforgettable experiences.",
-        type : 'Remote',
+        type: 'Remote',
         location: 'Bangalore',
         role: 'Full Stack Developer',
         stack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'Redux'],
@@ -18,7 +18,7 @@ export default function ExperiencePage() {
         ],
         startDate: '5 May 2023',
         endDate: '25 July 2023',
-        duration : '3 Months',
+        duration: '3 Months',
         certificateLink: null,
     }
 
@@ -33,59 +33,68 @@ export default function ExperiencePage() {
                 <div id='exp1'>
                     <div id='head1' className="heading flex flex-col md:flex-row mb-6 px-4 md:px-0 items-center justify-between">
                         <div className="text-4xl text-center mb-4 font-semibold">{experience?.role}</div>
-                        <div className="opacity-85 px-4 py-2 rounded-xl font-medium flex items-center bg-glass bg-grey-light justify-center h-full text-xl"> 
+                        <div className="opacity-85 px-4 py-2 rounded-xl font-medium flex items-center bg-glass bg-grey text-white justify-center h-full text-xl">
                             <span className="text-center">{experience?.startDate}</span>
                             <span className='mx-2'>-</span>
                             <span className="mr-3 text-center">{experience?.endDate}</span>
-                           <span className='text-center mx-1 hidden sm:flex'>({experience?.duration})</span>
+                            <span className='text-center mx-1 hidden sm:flex'>({experience?.duration})</span>
                         </div>
                     </div>
 
-                    <div className="px-4 md:px-0 flex flex-col-reverse md:flex-row">
-
-                        <div id='role1' className="bg-glass grow shrink-0 bg-grey-light rounded-lg basis-1/3 px-2 py-4 ">
-
-                           <div className="my-2 flex justify-center flex-wrap">
-                            {experience?.stack?.map((item,index)=>{
-                                return <span key={index} className='mx-2 bg-glass bg-grey-light py-2 px-4 mb-2 rounded-md'>
-                                    {item}
-                                    </span>
-                            })}
-                           </div>
-
-                            <div className=" p-1 flex flex-wrap items-center justify-center">
-                                {experience?.roleDescription?.map((work,index)=>{
-                                    return <div key={index} className="flex items-start mb-2">
-                                     <span className='text-2xl mr-1'>&bull;</span>   
-                                     <span className='mt-1 font-medium'>{work}</span>
-                                    </div>
-                                })}
+                    <div className="px-4 md:px-0 flex flex-col flex-wrap md:flex-row">
+                        <div id='comp1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light rounded-lg basis-1/3 py-4 px-6">
+                            <div className="text-3xl text-center md:text-start py-2 w-full rounded-md text-white font-bold">Company : {experience.companyName}</div>
+                            <div className="flex justify-between md:justify-start mt-4 opacity-75">
+                                <span className='md:pr-4'>  Location : {experience.location} </span>
+                                <span> Type : {experience.type}</span>
                             </div>
 
-                        </div>
-
-                        <div id='exp1img' className="image shrink grow-0 basis-1/3 flex items-center justify-center">
-                            <div className="w-1/2 relative">
-                            <img alt='laptop' src="/laptop.png" className='w-full h-auto'/>
-                            </div>
-                        </div>
-
-                        <div id='comp1' className="bg-glass relative grow shrink-0 bg-grey-light rounded-lg basis-1/3 py-4 px-6">
-                            <div className="text-2xl text-center font-medium">{experience.companyName}</div>
-                            <div className="flex justify-between mt-4 opacity-75">
-                              <span>  Location : {experience.location} </span>
-                              <span> Type : {experience.type}</span>
-                            </div>
-                            
                             <div className="mt-[2rem] font-semibold">
                                 {experience.companyDescription}
                             </div>
 
                             {
                                 experience?.certificateLink ? <div className="certificate mt-[4rem]">
-                                <a href={experience?.certificateLink} className='px-4 py-2 rounded-lg bg-grey'>Certificate</a>
-                            </div> : null
+                                    <a href={experience?.certificateLink} className='px-4 py-2 rounded-lg bg-darksemi'>Certificate</a>
+                                </div> : null
                             }
+                        </div>
+
+                        <div id='role1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light rounded-lg basis-1/3 px-12 py-4 ">
+
+                            <div className="my-2 flex justify-center flex-wrap">
+                                {experience?.stack?.map((item, index) => {
+                                    return <motion.span drag
+                                        dragConstraints={{
+                                            right: 0,
+                                            top: 0,
+                                            bottom: 0,
+                                            left: 0,
+                                        }}
+                                        dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
+                                        dragElastic={0.1}
+                                        whileTap={{ cursor: "grabbing" }}
+                                        key={index} className='mx-2 cursor-grab text-white transition-colors bg-grey-light hover:bg-grey bg-glass bg-opacity-35 py-2 px-4 mb-2 rounded-lg'>
+                                        {item}
+                                    </motion.span>
+                                })}
+                            </div>
+
+                            <div className=" p-1 flex flex-wrap items-center justify-center">
+                                {experience?.roleDescription?.map((work, index) => {
+                                    return <div key={index} className="flex items-start mb-2">
+                                        <span className='text-2xl mr-1'>&bull;</span>
+                                        <span className='mt-1 font-medium'>{work}</span>
+                                    </div>
+                                })}
+                            </div>
+
+                        </div>
+
+                        <div id='exp1img' className="image min-w-[25rem] shrink relative grow basis-1/3 hidden md:!flex items-center justify-center">
+                            <div className="w-1/2 relative">
+                                <img alt='laptop' src="/laptop.png" className='w-full h-auto' />
+                            </div>
                         </div>
                     </div>
 
@@ -94,5 +103,5 @@ export default function ExperiencePage() {
             </div>
 
         </div>
-        )
+    )
 }
