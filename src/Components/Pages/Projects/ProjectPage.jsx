@@ -104,9 +104,9 @@ const ProjectTab = ({project})=>{
                             </div>
                     })}
         </div>
-        <div className="mt-[4rem] mb-[1rem] flex justify-evenly md:justify-normal md:mx-6">
-            <a href={link} target="_blank" className="px-4 py-2 bg-darkgreen hover:bg-green rounded-xl md:mr-6 font-semibold text-lg">Visit</a>
-            <a href={github} target="_blank" className="px-4 py-2 bg-darkgreen hover:bg-green rounded-xl font-semibold text-lg">Github</a>
+        <div className="mt-[4rem] mb-[1rem] flex flex-wrap gap-3 justify-evenly md:justify-normal md:mx-6">
+            <a href={link} target="_blank" className="px-4 py-2 bg-green min-w-[10rem] md:min-w-0 text-center rounded-lg md:mr-6 text-lg font-semibold ">Visit</a>
+            <a href={github} target="_blank" className="px-4 py-2 bg-green min-w-[10rem] md:min-w-0 text-center rounded-lg text-lg font-semibold ">Github</a>
         </div>
     </div>
 

@@ -33,8 +33,8 @@ const links = [
 export default function NavBar() {
 
     const [scope,animate] = useAnimate();
+    const [scope2,animate2] = useAnimate();
     const [menuScope,Manimate]  = useAnimate();
-    const [show , setShow] = useState(true);
     const [isOpen ,setOpen] = useState(false);
 
     const animations = {
@@ -54,43 +54,42 @@ export default function NavBar() {
     const {scrollY} = useScroll();
 
     scrollY.on('change',(latest)=>{
-        if(latest < scrollY.getPrevious()){
-           expandNav()
-           setShow(true);
-        }
-        else{ shrinkNav(); setShow(false)}
         setOpen(false);
+        
+        if(latest < scrollY.getPrevious()){
+           expandNav();
+           expandNav2();
+        }
+        else{ 
+            shrinkNav();
+            shrinkNav2();
+        }
     })
-
-    const scrollAnimations = {
-        hideNav : { translateY : '-200%' },
-        showNav : { translateY : '0%' }
-    }
 
     const usermenuAnimations = {
         shrink : { height : 0, paddingTop : 0, paddingBottom : 0},
         expand : {height : 'fit-content' , paddingTop : '1rem' , paddingBottom : '1rem'}
     }
     
-    const expandUserMenu = ()=> Manimate(menuScope.current,usermenuAnimations.expand);
-    const shrinkUserMenu = ()=> Manimate(menuScope.current,usermenuAnimations.shrink)
+    const expandUserMenu = ()=>{
+         Manimate(menuScope.current,usermenuAnimations.expand);
+    }
+    const shrinkUserMenu = ()=>{
+        Manimate(menuScope.current,usermenuAnimations.shrink)
+    } 
 
     useEffect(()=>{
         if(isOpen) expandUserMenu();
         else shrinkUserMenu();
     },[isOpen])
 
-    const expandNav = async ()=>{
-        animate([
-            [scope.current,scrollAnimations.showNav, { duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }],
-         ])
-    }
+    const expandNav = ()=>{ animate([[scope.current,{ translateY : '0%' }, { duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }]]);}
+    const expandNav2 = ()=>{ animate2([[scope2.current,{translateX : '0%'}, { duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }]]);}
+    
 
-    const shrinkNav = async ()=>{
-         animate([
-            [scope.current,scrollAnimations.hideNav , { duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }],
-         ])
-    }
+    const shrinkNav = ()=>{ animate([[scope.current,{ translateY : '-200%' } , { duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }]]);}
+    const shrinkNav2 = ()=>{ animate2([[scope2.current,{translateX : '-150%'} ,{ duration : 0.02, type : 'spring' , ease : 'easeIn' , damping : 20 , stiffness : 200 }]]);}
+    
 
     return <>
      <motion.div ref={scope} initial='hideNav' variants={animations} className="fixed sm:!flex hidden flex-wrap py-4 mt-2 z-[1] rounded-md overflow-hidden text-white bg-glass bg-grey justify-evenly">
@@ -102,10 +101,10 @@ export default function NavBar() {
         }
     </motion.div>  
 
-    <motion.div onClick={()=>setOpen(!isOpen)} className="flex sm:!hidden bg-grey hover:bg-[#65646461] bg-glass z-[1] items-center cursor-pointer fixed left-5 mt-2 py-4 px-4 rounded-md ">
-       <motion.span className="mr-3 text-lg">Menu</motion.span> <MenuButton isOpen={isOpen}  />
+    <motion.div onClick={()=>setOpen(!isOpen)} className="flex sm:!hidden  z-[1] items-center cursor-pointer fixed left-3 mt-2 p-2 ">
+       <motion.span ref={scope2} initial={{translateX:'-150%'}} animate={{translateX : '0%'}}  className="mr-3 text-lg bg-glass justify-center items-center py-4 px-4 gap-3 rounded-lg flex bg-grey">Menu <MenuButton  isOpen={isOpen}  />  </motion.span>
 
-       <motion.div ref={menuScope} initial='shrink' variants={usermenuAnimations} transition={{duration : 1}} className="absolute top-[120%] py-4 left-0 overflow-hidden bg-grey bg-glass rounded-lg flex flex-col">
+       <motion.div ref={menuScope} initial='shrink' variants={usermenuAnimations} transition={{duration : 1}} className="absolute top-[100%] py-4 left-0 overflow-hidden bg-grey bg-glass rounded-lg flex flex-col">
        {  links.map((link) =>{
             return <motion.a key={link.id} layout href={link.id} className="px-8 py-2 text-2xl font-bold">
             {link.title}

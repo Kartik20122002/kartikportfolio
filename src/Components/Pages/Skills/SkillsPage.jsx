@@ -13,9 +13,9 @@ export default function SkillsPage(){
 
         {
             Object.keys(skills).map((skillset, index)=>{
-                return <div className="flex my-4 items-center flex-col md:flex-row bg-glass rounded-md bg-grey-light py-4 px-3" key={index}>
+                return <div className="flex my-6 items-center flex-col md:flex-row bg-glass rounded-md md:bg-grey-light py-4 px-3" key={index}>
                     <div className="px-4 py-2 bg-green text-center text-nowrap font-semibold rounded-md">{skillset} </div>
-                    <div className="skills mt-4 md:mt-0 md:ml-6 gap-4 flex overflow-hidden justify-center md:justify-start flex-wrap ">
+                    <div className="skills mt-8 md:mt-0 md:ml-6 gap-4 flex overflow-hidden justify-center md:justify-start flex-wrap ">
                         { skills[skillset]?.map((skill,i)=>{
                             return <div key={i} className="px-4 min-w-[4rem] w-fit text-center py-2 bg-glass bg-grey text-nowrap rounded-full">
                                 {skill}

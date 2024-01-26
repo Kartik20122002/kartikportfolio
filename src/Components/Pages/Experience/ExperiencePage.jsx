@@ -28,9 +28,9 @@ export default function ExperiencePage() {
 
             <div className="text-[3rem] font-bold px-4 md:px-0 mb-[4rem]">Experience</div>
 
-            <div className={`w-full mt-4 overflow-hidden`}>
+            <div className={`w-full mt-4 overflow-`}>
 
-                <div id='exp1'>
+                <div id='exp1 w-full'>
                     <div id='head1' className="heading flex flex-col md:flex-row mb-6 px-4 md:px-0 items-center justify-between">
                         <div className="text-4xl text-center mb-4 font-semibold">{experience?.role}</div>
                         <div className="opacity-85 px-4 py-2 rounded-xl font-medium flex items-center bg-glass bg-grey text-white justify-center h-full text-xl">
@@ -42,9 +42,10 @@ export default function ExperiencePage() {
                     </div>
 
                     <div className="px-4 md:px-0 flex flex-col flex-wrap md:flex-row">
-                        <div id='comp1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light bg-glass rounded-lg basis-1/3 py-4 px-6">
+
+                        <div id='comp1' className="bg-glass md:min-w-[25rem] relative grow shrink-0 bg-grey-light bg-glass rounded-lg basis-1/3 py-4 px-3 md:px-6">
                             <div className="text-3xl text-center md:text-start py-2 w-full rounded-md text-white font-bold">Company : {experience.companyName}</div>
-                            <div className="flex justify-between md:justify-start mt-4 opacity-75">
+                            <div className="flex justify-between md:justify-start flex-col md:flex-row mt-4 opacity-75">
                                 <span className='md:pr-4'>  Location : {experience.location} </span>
                                 <span> Type : {experience.type}</span>
                             </div>
@@ -60,7 +61,7 @@ export default function ExperiencePage() {
                             }
                         </div>
 
-                        <div id='role1' className="bg-glass min-w-[25rem] relative grow shrink-0 bg-grey-light rounded-lg basis-1/3 px-12 py-4 ">
+                        <div id='role1' className="bg-glass md:min-w-[25rem] relative grow shrink-0 bg-grey-light rounded-lg basis-1/3  px-3 md:px-12 py-4 ">
 
                             <div className="my-2 flex justify-center flex-wrap">
                                 {experience?.stack?.map((item, index) => {
@@ -91,7 +92,7 @@ export default function ExperiencePage() {
 
                         </div>
 
-                        <div id='exp1img' className="image min-w-[25rem] shrink relative grow basis-1/3 hidden md:!flex items-center justify-center">
+                        <div id='exp1img' className="md:min-w-[25rem] shrink relative grow basis-1/3 hidden md:!flex items-center justify-center">
                             <div className="w-1/2 relative">
                                 <img alt='laptop' src="/laptop.png" className='w-full h-auto' />
                             </div>
