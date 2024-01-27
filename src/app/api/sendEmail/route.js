@@ -26,10 +26,10 @@ export async function POST(req  ) {
 
       transporter.sendMail(mailOptions, function(err, data) {
         if (err) {
-          console.log('err',err)
+          // console.log('err',err)
           return NextResponse.error(err); 
         }
-        console.log('data',data);
+        // console.log('data',data);
         return NextResponse.json(data);
       });
 
@@ -37,7 +37,7 @@ export async function POST(req  ) {
 
     }
     catch(err){
-    console.log('fetch error' , {err});
+    // console.log('fetch error' , {err});
     return NextResponse.error(err);
     }
     }
