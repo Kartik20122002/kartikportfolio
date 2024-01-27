@@ -1,3 +1,4 @@
+import Icon from '@/Components/Icon';
 import { motion } from 'framer-motion';
 
 export default function ExperiencePage() {
@@ -9,7 +10,13 @@ export default function ExperiencePage() {
         type: 'Remote',
         location: 'Bangalore',
         role: 'Full Stack Developer',
-        stack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'Redux'],
+        stack: [
+            {name : 'Next.js' , path : './nextjs.svg'},
+            {name : 'React.js' , path : './react.ico'},
+            {name : 'TypeScript' , path : './typescript.ico'},
+            {name : 'Tailwind CSS' , path : './tailwind-css.ico'},
+            {name : 'Redux' , path : './redux.ico'} , ],
+
         roleDescription: [
             'Spearheaded the implementation of the Next.js framework to enhance user engagement and performance on website,demonstrating expertise in modern React.js frameworks.',
             'Designed and coded a visually appealing and intuitive user interface, prioritizing accessibility and visual appeal, and increasing user engagement by up to 50%.',
@@ -75,8 +82,8 @@ export default function ExperiencePage() {
                                         dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
                                         dragElastic={0.1}
                                         whileTap={{ cursor: "grabbing" }}
-                                        key={index} className='mx-2 cursor-grab text-white transition-colors bg-grey-light hover:bg-grey bg-glass bg-opacity-35 py-2 px-4 mb-2 rounded-lg'>
-                                        {item}
+                                        key={index} className='flex gap-2 flex-nowrap mx-2 cursor-grab text-white bg-grey bg-glass py-2 px-4 mb-2 rounded-lg'>
+                                        <span><Icon path={item.path} /></span>  {item.name}
                                     </motion.span>
                                 })}
                             </div>

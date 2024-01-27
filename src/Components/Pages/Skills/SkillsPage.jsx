@@ -1,11 +1,47 @@
+import Icon from "@/Components/Icon"
+
 export default function SkillsPage(){
     const skills = {
-        'Languages' : ['C','C++','Python','Java','SQL'],
-        'FrameWorks/Libraries' : ['Next.js','React.js','Express.js','Mongoose'],
-        'Web Technologies' : ['Node.js','HTML5','CSS3','Javascript','Typescipt','Redux','HTMX','Mongoose'],
-        'Databases' : ['MongoDB','Firebase DB','MySQL'],
-        'Tools' : ['Git','Github','Postman','VS Code IDE','Passport.js','Next-Auth','Virtual Box'],
-        'Other' : ['Object Oriented Programming','Data Structures' , 'Algorithms','Operating Systems' , 'Database Management' , 'System Design']
+        'Languages' : [
+                { name : 'C' , path : './c.ico'},
+                { name : 'C++', path : './c++.ico'},
+                { name : 'Python' , path : './python.ico' },
+                { name : 'Java' , path : './java.ico'},
+                { name : 'SQL' , path : './sql.ico' },
+        ],
+        'FrameWorks/Libraries' : [
+                { name : 'Next.js' , path : './nextjs.svg'},
+                { name : 'React.js', path : './react.ico'},
+                { name : 'Express.js' , path : './express.ico' },
+                { name : 'Mongoose' , path : null},
+        ],
+        'Web Technologies' : [
+            { name : 'Node.js' , path : './nodejs.ico'},
+            { name : 'Mongoose' , path : null},
+            { name : 'Redux' , path : './redux.ico'},
+            { name : 'Typescript' , path : './typescript.ico'},
+            { name : 'HTML5', path : './html.ico'},
+            { name : 'CSS3' , path : './css.ico' },
+            { name : 'Javascript' , path : './javascript.ico'},
+            { name : 'HTMX' , path : null},
+        ],
+        'Databases' : [
+                { name : 'MongoDB', path : './mongodb.ico'},
+                { name : 'Firebase DB' , path : './firebase.ico' },
+                { name : 'MySQL' , path : './mysql.ico'},
+        ],
+        'Tools' :[
+            { name : 'Git' , path : './git.ico'},
+            { name : 'Github', path : './github.ico'},
+            { name : 'Postman' , path : './postman.ico' },
+            { name : 'VS Code IDE' , path : './visual-studio-code.ico'},
+            { name : 'Passport.js' , path : null},
+            { name : 'Next-Auth' , path : null},
+            { name : 'Virtual Box' , path : null},
+        ],
+        'Other' : [{name :'Object Oriented Programming'},
+        {name : 'Data Structures'} ,{name : 'Algorithms'},{name : 'Operating Systems' }, {name : 'Database Management'} ,
+         {name :'System Design'}]
     }
     return (
     <div id="skills" className="w-full mb-8 px-0 md:px-[4rem]">
@@ -17,8 +53,8 @@ export default function SkillsPage(){
                     <div className="px-4 py-2 bg-green text-center text-nowrap font-semibold rounded-md">{skillset} </div>
                     <div className="skills mt-8 md:mt-0 md:ml-6 gap-4 flex overflow-hidden justify-center md:justify-start flex-wrap ">
                         { skills[skillset]?.map((skill,i)=>{
-                            return <div key={i} className="px-4 min-w-[4rem] w-fit text-center py-2 bg-glass bg-grey text-nowrap rounded-full">
-                                {skill}
+                            return <div key={i} className="flex gap-2 flex-nowrap px-4 min-w-[4rem] w-fit text-center py-2 bg-glass bg-grey text-nowrap rounded-full">
+                                <span><Icon path={skill?.path} /></span> <span>{skill?.name}</span>
                             </div>
                         })}
                     </div>

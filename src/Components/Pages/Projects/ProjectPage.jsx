@@ -1,3 +1,4 @@
+import Icon from '@/Components/Icon'
 import {motion} from 'framer-motion'
 export default function ProjectPage() {
 
@@ -7,7 +8,16 @@ export default function ProjectPage() {
             name : 'Youtube Pro',
             github : 'https://github.com/Kartik20122002/YouTube-2.0',
             link : 'https://youtubepro.vercel.app/',
-            stack : ['Next.js' , 'React.js' , 'MongoDB' , 'Typescript', 'Next Auth', 'Tailwind CSS' , 'Framer Motion' , 'Google APIs'],
+            stack : [
+                { name : 'Next.js' , path : './nextjs.svg'},
+                { name : 'React.js', path : './react.ico'},
+                { name : 'MongoDB' , path : './mongodb.ico'},
+                { name : 'Typescript' , path : './typescript.ico'},
+                { name : 'Next Auth' , path : './nextauth.png'},
+                { name : 'Tailwind CSS' , path : './tailwind-css.ico'},
+                { name : 'Framer Motion' , path : './framer.ico'},
+                { name : 'Youtube API' , path : './youtube.ico'}
+            ],
             description : [
                 'Ad-Free Video Streaming and Downloading Platform, providing core features of YouTube.',
                 'User can watch videos, channels , playlists, and can perform actions like subscribing, rating, comment, share, etc.',
@@ -21,7 +31,17 @@ export default function ProjectPage() {
             name : 'Gmanager',
             github : 'https://github.com/Kartik20122002/Gmanager',
             link : 'https://gmanager-gvl7.onrender.com/',
-            stack : ['Node.js' ,'Express.js' , 'EJS' , 'MongoDB' , 'JavaScript', 'BootStrap', 'JWT Auth' , 'Google APIs'],
+            stack :
+            [
+                { name : 'Node.js' , path : './nodejs.ico'},
+                { name : 'Express.js', path : './express.ico'},
+                { name : 'EJS' , path : null },
+                { name : 'MongoDB' , path : './mongodb.ico'},
+                { name : 'JavaScript' , path : './javascript.ico'},
+                { name : 'BootStrap' , path : './bootstrap.ico'},
+                { name : 'JWT Auth' , path : null},
+                { name : 'Gmail API' , path : './gmail.ico'}
+            ],
             description : [
                 'Optimized Gmail PDF management through segregation by sender, enhancing navigation and retrieval efﬁciency for speciﬁc documents.',
                 'Empowered users to create custom folders based on PDF attachments, promoting personalized content organization and efﬁcient workﬂows.',
@@ -35,7 +55,18 @@ export default function ProjectPage() {
             name : 'Text Tools',
             github : 'https://github.com/Kartik20122002/Text-Tools',
             link : 'https://texttools98.onrender.com/',
-            stack : ['Node.js' ,'Express.js' , 'EJS' , 'MongoDB','Firebase' , 'JavaScript', 'BootStrap', 'JWT Auth' , 'REST APIs'],
+            stack :
+            [
+                { name : 'Node.js' , path : './nodejs.ico'},
+                { name : 'Express.js', path : './express.ico'},
+                { name : 'EJS' , path : null },
+                { name : 'MongoDB' , path : './mongodb.ico'},
+                { name : 'FireBase' , path : './firebase.ico' },
+                { name : 'JavaScript' , path : './javascript.ico'},
+                { name : 'BootStrap' , path : './bootstrap.ico'},
+                { name : 'JWT Auth' , path : null},
+                { name : 'Rest API' , path : './api.ico'}
+            ],
             description : [
                 'Text-Tools is a Web-App to help users with various things such as Image to Text Translation, Paragraph Summarizer, Text to Speech,etc.',
                 'With a User Account, Users can Sign up and save results in their account and directly download saved data to their local devices',
@@ -90,8 +121,8 @@ const ProjectTab = ({project})=>{
                     }}
                     dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
                     dragElastic={0.1}
-                    whileTap={{ cursor: "grabbing" }} key={index} className='mx-2 cursor-grab transition-colors relative text-nowrap bg-glass bg-grey-light hover:bg-grey py-2 px-4 mb-2 rounded-md'>
-                        {item}
+                    whileTap={{ cursor: "grabbing" }} key={index} className='flex gap-2 flex-nowrap mx-2 cursor-grab transition-colors relative text-nowrap bg-glass bg-grey-light hover:bg-grey py-2 px-4 mb-2 rounded-md'>
+                        <span><Icon path={item.path}/></span>{item.name}
                         </motion.span>
                 })
             }

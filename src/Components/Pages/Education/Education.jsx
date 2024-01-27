@@ -36,7 +36,7 @@ export default function EducationPage(){
         {education?.map((item,index)=>{
             const {college , degree , branch , grade , date } = item;
 
-            return <motion.div drag
+            return <motion.div drag='x'
             dragConstraints={{
                 right: 0.5,
                 top : 0.5,

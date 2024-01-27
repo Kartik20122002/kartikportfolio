@@ -1,7 +1,8 @@
+import Icon from "@/Components/Icon";
 import { useState } from "react";
 
 export default function ContactPage(){
-    const [loading , setLoading] = useState(false);
+    const [loading , setLoading] = useState(0);
     const [userEmail,setUserEmail] = useState('');
     const [subject,setSubject] = useState('');
     const [msg,setMsg] = useState('');
@@ -47,11 +48,13 @@ export default function ContactPage(){
                 },
                 body: JSON.stringify({ userEmail : userEmail , subject : subject , msg : msg })
             }).then((res)=>{
-                setLoading(false);
-                clearAll();
+                setLoading(-1);
+                setTimeout(()=>{
+                    setLoading(0)
+                },2000)
             }).catch(()=>{
                 setWarning("Due to Some Error Email cannot be sent, Please check Connection and Try Again")
-                setLoading(false);
+                setLoading(0)
             })
         }
     }
@@ -81,7 +84,7 @@ export default function ContactPage(){
            <div className="text-[red] md:w-2/3 w-full  flex justify-center md:justify-start">{warning}</div>
 
            <div className="flex gap-6 flex-wrap md:w-2/3 w-full">
-              <button id="submit" type="submit" className="px-4 py-2 rounded-lg font-semibold bg-green min-w-[7em]">{loading ? 'Sending...' : 'Send'}</button>
+              <button id="submit" type="submit" className="px-4 py-2 rounded-lg font-semibold bg-green min-w-[7em]">{loading == -1 ? <span className="flex gap-2 flex-nowrap">Sent <span><Icon path={'./tick.ico'}/></span></span> : loading ? 'Sending...' : 'Send'}</button>
               <button id="clear" type='reset' onClick={()=>clearAll()} className="px-4 py-2 rounded-lg font-semibold bg-darkgreen min-w-[7em]">Clear</button>
            </div>
 

@@ -1,5 +1,8 @@
 import { motion , stagger, useAnimate } from 'framer-motion'
 import { useEffect } from 'react';
+import { FaFilePdf } from 'react-icons/fa6'
+import Icon from '@/Components/Icon';
+
 
 
 export default function InfoSection(){
@@ -27,12 +30,15 @@ export default function InfoSection(){
     const links = [
         {
             link : 'https://drive.google.com/file/d/1p0j6SUGf_7DajJd5Xx4NI88ILW6TB6sL/view?usp=sharing', name : 'Resume',
+            icon : <FaFilePdf className='text-slate-400' />,
         },
         {
             link : 'https://www.linkedin.com/in/kartikhatwar' , name : 'LinkedIn',
+            icon : <Icon path="./linkedin.ico"/>,
         },
         {
             link : 'mailto:kartikhatwar98@gmail.com' , name : 'Email',
+            icon : <Icon path={'./gmail.ico'}/>,
         }
     ]
 
@@ -47,11 +53,11 @@ export default function InfoSection(){
             {description}
         </motion.div>
 
-        <div className="flex justify-center mt-[3rem] md:justify-start buttons">
+        <div className="flex flex-wrap gap-4 justify-center mt-[3rem] md:justify-start buttons">
             {
                 links?.map((link,index)=>{
-                    return link ? <motion.a layout initial='hideBtn' variants={TabAnimations} key={index} className="px-4 py-2 links mx-4 my-2 bg-darkgreen text-white font-semibold rounded-md" href={link?.link}>
-                        {link?.name}
+                    return link ? <motion.a layout initial='hideBtn' target='_blank' variants={TabAnimations} key={index} className="px-4 py-2 links my-2  border border-white flex flex-nowrap items-center text-white font-semibold rounded-md" href={link?.link}>
+                       <span className='text-3xl mr-3'>{link.icon}</span> {link?.name}
                         </motion.a>
                     : null
                 })
