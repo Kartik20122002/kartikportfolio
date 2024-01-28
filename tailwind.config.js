@@ -22,8 +22,19 @@ module.exports = {
         'semidark' : '#232D3F',
         'green' : '#008170',
         'darkgreen' : '#005B41'
+      },
+      animation : {
+        'pulse' : 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+      },
+      keyframes : {
+        pulse : {
+          '50%': {
+            opacity: '0'
+          }
+        }
       }
     },
   },
   plugins: [],
 }
+
