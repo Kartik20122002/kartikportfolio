@@ -12,7 +12,7 @@ export default function Home() {
   // }, []);
 
   return (
-   <div className={`flex flex-col bg-dark text-white pb-6 relative items-center`}>
+   <div className={`flex flex-col bg-dark text-white pb-6 items-center`}>
     <NavBar />
     <MainPage />
    </div>

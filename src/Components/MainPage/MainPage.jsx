@@ -7,7 +7,7 @@ import SkillsPage from "../Pages/Skills/SkillsPage";
 
 export default function MainPage(){
     return (
-    <div className="w-full mt-[10vh]">
+    <div className="w-full">
         <HomePage/>
         <EducationPage/>
         <ExperiencePage/>

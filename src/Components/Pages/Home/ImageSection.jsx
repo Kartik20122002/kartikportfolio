@@ -1,7 +1,7 @@
 import { useAnimate , motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import React ,{ useEffect } from 'react';
 
-export default function ImageSection(){
+export default function ImageSection({translateX2}){
 
     const dx = 10;
     const dy = 10;
@@ -46,7 +46,7 @@ export default function ImageSection(){
     }
 
     return (
-    <div ref={scope} className="flex items-start justify-center sm:mt-[4rem] overflow-hidden py-4 md:mx-0 md:mt-0 w-full h-full rounded-lg ">
+    <div ref={scope} className="flex items-start justify-center sm:mt-[4rem] py-4 md:mx-0 md:mt-0 w-full h-full rounded-lg ">
 
         <motion.div
         onMouseLeave={handleMouseLeave}
@@ -54,6 +54,7 @@ export default function ImageSection(){
          style={{
             rotateX,
             rotateY,
+            translateX : translateX2,
             transformStyle : "preserve-3d",
         }} id='outer' initial='hideTab' variants={variations} className="bg-grey-light inset-4 w-[10rem] h-[15rem] sm:w-[20rem] sm:h-[30rem] relative border-grey-light border origin-top z-0 flex justify-center items-center md:items-start rounded-xl p-[1rem]">
         
