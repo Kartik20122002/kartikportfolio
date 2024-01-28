@@ -1,16 +1,16 @@
-import { motion , stagger, useAnimate } from 'framer-motion'
+import { motion , stagger, useAnimate, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import { FaFilePdf } from 'react-icons/fa6'
 import Icon from '@/Components/Icon';
 import { TypeAnimation } from 'react-type-animation';
 
 const name = "Kartik Hatwar";
-const designations = ["Full Stack Developer",2000,'',
-"Programmer",2000,'',
- "Problem Solver",2000,'',
- "Softwar Developer",2000,'',
- "Front End Developer",2000,'',
- "Back End Developer",2000,'',]
+const designations = ["Full Stack Developer",2000,
+ "Competitive Programmer",2000,
+ "Problem Solver",2000,
+ "Software Developer",2000,
+ "Front End Developer",2000,
+ "Back End Developer",2000,]
 const description = "I am Final Year Student at IIT Dhanbad. I have Extensive Knowlegde and Work Experience as Full Stack Developer working with Tech like Next.js, MERN Stack, AWS, etc. I am also Competitive Programmer on site like Codeforces, Leetcode, etc."
 const links = [
     {
@@ -28,10 +28,9 @@ const links = [
 ]
 
 
+
 export default function InfoSection(){
 
-    const [chend,setChend] = useState(1);
-    const [array,setArray] = useState([]);
     const [scope , animate] = useAnimate();
 
     const TabAnimations = {
@@ -44,9 +43,19 @@ export default function InfoSection(){
         ['#name',TabAnimations.showName,{duration : 0.1 , delay : 0.2 }],
         ['#desig',TabAnimations.showName,{duration : 0.1 , delay : 0.2 }],
         ['#desc',TabAnimations.showDesc,{duration : 0.1 , delay : 0.3}],
-        ['.links',TabAnimations.showBtn,{duration : 0.1 , delay : stagger(0.1,'startDelay')  , type : 'spring' , damping : 20 , stiffness : 100 }],
+        ['.links',TabAnimations.showBtn,{duration : 0.1 , delay : stagger(0.1,'startDelay') , type : 'spring' , damping : 20 , stiffness : 100 }],
     ]);
 
+    const handelHover = (index,show)=>{
+        const id = `#btn${index}`;
+
+
+        
+        if(show){
+            animate(id,{scaleY : 1},{duration : 0.1 , damping : 20 , stiffness : 100 })
+        }
+        else animate(id,{scaleY : 0},{duration : 0.1, damping : 20 , stiffness : 100 })
+    }
   
 
     useEffect(()=>{
@@ -65,10 +74,9 @@ export default function InfoSection(){
         </motion.div>
 
         <motion.div id='desig' initial='hideName' variants={TabAnimations} 
-        className="text-[2rem] flex gap-1 font-semibold text-green blur-0">
+        className="text-[1rem] md:!text-[2rem] flex gap-1 font-semibold text-green blur-0">
             I am <motion.span className='ml-1'>
                 <TypeAnimation
-                className='text-[2rem]'
                 sequence={designations}
                 wrapper='span'
                 speed={5}
@@ -87,9 +95,16 @@ export default function InfoSection(){
         <div className="flex flex-wrap gap-4 justify-center mt-[3rem] md:justify-start buttons">
             {
                 links?.map((link,index)=>{
-                    return link ? <motion.a layout initial='hideBtn' target='_blank' variants={TabAnimations} key={index} className="px-4 py-2 links my-2 border border-white flex flex-nowrap items-center text-white font-semibold rounded-md" href={link?.link}>
-                       <span className='text-3xl mr-3'>{link.icon}</span> {link?.name}
-                        </motion.a>
+                    return link ? 
+                    <motion.span onHoverStart={()=>handelHover(index,true)} onHoverEnd={()=>handelHover(index,false)} layout initial='hideBtn' target='_blank' variants={TabAnimations} key={index} className="py-2 links my-2 border flex relative flex-nowrap items-center overflow-hidden border-white hover:border-black text-white hover:text-black font-semibold rounded-md">
+                    
+                    <motion.div id={`btn${index}`} style={{scaleY : 0 , transformOrigin : 'bottom'}} className="absolute -z-10 w-full flex h-full bg-white"/>
+
+                    <motion.a  href={link?.link} className='w-full h-full  gap-3 mx-4 flex flex-nowrap items-center'>
+                       <span className='text-3xl'>{link.icon}</span> {link?.name}
+                    </motion.a>
+                    </motion.span>
+                    
                     : null
                 })
             }

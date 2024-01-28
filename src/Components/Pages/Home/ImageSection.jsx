@@ -61,14 +61,13 @@ export default function ImageSection(){
             transform : "translateZ(80px)",
             transformStyle : "preserve-3d",
         }}
-
-        id='img' initial='hideImg' className='absolute insset-4 w-[9rem] h-[13rem] sm:w-[18rem] sm:h-[28rem] bg-grey border border-grey shadow shadow-grey p-[1rem] rounded-xl' variants={variations}>
+        id='img' initial='hideImg' className='absolute inset-4 w-[9rem] h-[13rem] sm:w-[18rem] sm:h-[28rem] bg-grey border border-grey shadow shadow-grey p-[1rem] rounded-xl' variants={variations}>
 
 
         <motion.img style={{
             transform : "translateZ(20px)",
             transformStyle : "preserve-3d",
-        }} loading='eager' src={path} className=' w-[95%] h-[95%] rounded-full' alt='User'/>
+        }} loading='eager' src={path} className='w-[95%] h-[95%] rounded-full' alt='User'/>
 
         </motion.div>
 
