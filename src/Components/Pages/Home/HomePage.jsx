@@ -12,7 +12,7 @@ export default function HomePage(){
 
     // 
     return (
-    <div id="home" ref={ContainerRef} className="px-4 md:pt-[6rem] flex flex-col-reverse md:flex-row md:px-[4rem] w-full pb-2">
+    <div id="home" className="px-4 md:pt-[6rem] flex flex-col-reverse md:flex-row md:px-[4rem] w-full pb-2">
         
 
         <div className="basis-full md:basis-1/2">
