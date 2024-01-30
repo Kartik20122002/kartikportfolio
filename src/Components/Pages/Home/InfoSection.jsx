@@ -28,8 +28,7 @@ const links = [
 ]
 
 
-export default function InfoSection({translateX}){
-    const {translateX1,translateX12,opacity1} = translateX;
+export default function InfoSection(){
     const [scope , animate] = useAnimate();
 
     const TabAnimations = {
@@ -64,13 +63,13 @@ export default function InfoSection({translateX}){
     <motion.div layout ref={scope} 
     className="flex flex-col gap-4 px-4 items-center md:items-start origin-left max-w-full sm:mt-[2rem] md:mt-[4rem] cursor-pointer  mb-[4rem] md:mb-[7rem] py-4">
 
-        <motion.div style={{translateX : translateX1 , opacity : opacity1  }} className="heading">
+        <motion.div className="heading">
             <motion.div  layout initial='hideName' variants={TabAnimations} id='name' className="text-[3rem] text-center md:text-start md:text-[4rem] font-bold">
                 {name}
             </motion.div>
         </motion.div>
 
-        <motion.div style={{translateX : translateX1 , opacity : opacity1 }} id='desig' initial='hideName' variants={TabAnimations} 
+        <motion.div id='desig' initial='hideName' variants={TabAnimations} 
         className="text-[1rem] md:!text-[2rem] flex gap-1 font-semibold text-lightgreen blur-0">
             <span className='text-white'>I am</span> <motion.span className='ml-1'>
                 <TypeAnimation
@@ -85,7 +84,7 @@ export default function InfoSection({translateX}){
             <motion.span layout transition={{duration : 1}} className='min-h-full min-w-[3.5px] animate-pulse bg-lightgreen'/>
         </motion.div>
 
-        <motion.div style={{translateX : translateX1 , opacity : opacity1  }} layout initial='hideDesc' variants={TabAnimations} id='desc' className="flex flex-wrap px-2 md:px-0 text-[1rem] md:text-[1.5rem] font-semibold text-center md:text-start">
+        <motion.div layout initial='hideDesc' variants={TabAnimations} id='desc' className="flex flex-wrap px-2 md:px-0 text-[1rem] md:text-[1.5rem] font-semibold text-center md:text-start">
             {description.split(" ").map((word,i)=>{
                 return <motion.span initial={{opacity : 0.2}} whileInView={{opacity : 1 }} viewport={{ once: true }} transition={{delay : 0.1*i + 0.4 , duration : 0.3}}  key={`word${i}`} className='mr-2' >
                             {word}
@@ -93,7 +92,7 @@ export default function InfoSection({translateX}){
             })}
         </motion.div>
 
-        <motion.div style={{translateX : translateX1 , translateY : translateX12 , opacity : opacity1}} className="flex flex-wrap gap-4 justify-center mt-[3rem] md:justify-start buttons">
+        <motion.div className="flex flex-wrap gap-4 justify-center mt-[3rem] md:justify-start buttons">
             {
                 links?.map((link,index)=>{
                     return link ? 

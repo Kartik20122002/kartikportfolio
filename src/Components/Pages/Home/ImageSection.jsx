@@ -1,7 +1,7 @@
 import { useAnimate , motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import React ,{ useEffect } from 'react';
 
-export default function ImageSection({translateX2}){
+export default function ImageSection(){
 
     const dx = 10;
     const dy = 10;
@@ -54,7 +54,6 @@ export default function ImageSection({translateX2}){
          style={{
             rotateX,
             rotateY,
-            translateX : translateX2,
             transformStyle : "preserve-3d",
         }} id='outer' initial='hideTab' variants={variations} className="bg-grey-light inset-4 w-[10rem] h-[15rem] sm:w-[20rem] sm:h-[30rem] relative border-grey-light border origin-top z-0 flex justify-center items-center md:items-start rounded-xl p-[1rem]">
         
